@@ -3,7 +3,7 @@ import { useState, useRef, useEffect } from "react";
 import Header from "../components/Header";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { LayoutDashboard, BarChart2, Menu, X } from "lucide-react";
+import { LayoutDashboard, BarChart2, Menu, X,Receipt } from "lucide-react";
 
 export default function Layout({ children }) {
     const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -21,6 +21,9 @@ export default function Layout({ children }) {
             href: "/analytics",
             icon: <BarChart2 className="w-5 h-5 mr-2" />,
         },
+        { name: "Expense Overview",
+            href: "/expense-categories",
+            icon: <Receipt className="w-5 h-5 mr-2" />,}
     ];
 
     // Close sidebar when clicking outside (only for small screens)
