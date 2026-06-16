@@ -174,13 +174,13 @@ const Analytics = () => {
           <div className="bg-white p-3 border border-gray-300 rounded-lg shadow-lg max-w-xs">
             <p className="font-semibold text-gray-800">{data.name}</p>
             <p className="text-sm text-gray-600">
-              Total: Rs {data.value.toLocaleString()}
+              Total: $ {data.value.toLocaleString()}
             </p>
             <div className="mt-2 text-xs text-gray-500">
               <p className="font-medium">Includes:</p>
               {data.details.slice(0, 5).map((cat, idx) => (
                 <p key={idx}>
-                  • {cat.name}: Rs {cat.value.toLocaleString()}
+                  • {cat.name}: $ {cat.value.toLocaleString()}
                 </p>
               ))}
               {data.details.length > 5 && (
@@ -194,7 +194,7 @@ const Analytics = () => {
         <div className="bg-white p-2 border border-gray-300 rounded-lg shadow-lg">
           <p className="font-semibold text-gray-800">{data.name}</p>
           <p className="text-sm text-gray-600">
-            Rs {data.value.toLocaleString()}
+            $ {data.value.toLocaleString()}
           </p>
           <p className="text-xs text-gray-500">
             {((data.value / totalExpense) * 100).toFixed(1)}% of total
@@ -289,7 +289,7 @@ const Analytics = () => {
               <div className="bg-blue-100 border-l-4 border-blue-500 text-blue-800 p-4 rounded-md shadow">
                 <div className="text-sm font-medium">Total Expense</div>
                 <div className="text-2xl font-bold">
-                  Rs {totalExpense.toLocaleString()}
+                  $ {totalExpense.toLocaleString()}
                 </div>
               </div>
 
@@ -299,7 +299,7 @@ const Analytics = () => {
                 {highestExpense ? (
                   <>
                     <div className="text-lg font-bold">
-                      Rs {highestExpense.amount.toLocaleString()}
+                      $ {highestExpense.amount.toLocaleString()}
                     </div>
                     <div className="text-sm">
                       {highestExpense.title || highestExpense.category}
@@ -344,13 +344,13 @@ const Analytics = () => {
                         <XAxis dataKey="name" tick={{ fill: "#555" }} />
                         <YAxis
                           tickFormatter={(value) =>
-                            `Rs${value.toLocaleString()}`
+                            `$${value.toLocaleString()}`
                           }
                           tick={{ fill: "#555" }}
                         />
                         <Tooltip
                           formatter={(value) => [
-                            `Rs ${value.toLocaleString()}`,
+                            `$ ${value.toLocaleString()}`,
                             "Total Expense",
                           ]}
                         />
@@ -432,8 +432,7 @@ const Analytics = () => {
                                   }}
                                 ></div>
                                 <span className="text-gray-700 truncate">
-                                  {entry.name}: Rs{" "}
-                                  {entry.value.toLocaleString()}
+                                  {entry.name}: $ {entry.value.toLocaleString()}
                                 </span>
                               </div>
                             ))}
@@ -461,7 +460,7 @@ const Analytics = () => {
                               </div>
                               <div className="text-right">
                                 <div className="font-semibold text-gray-800">
-                                  Rs {category.value.toLocaleString()}
+                                  $ {category.value.toLocaleString()}
                                 </div>
                                 <div className="text-xs text-gray-500">
                                   {(
