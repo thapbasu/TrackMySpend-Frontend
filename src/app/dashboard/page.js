@@ -83,6 +83,7 @@ const Dashboard = () => {
 
   const handleOpenModal = (expense) => {
     setSelectedExpense(expense || null);
+
     if (expense) {
       // Editing: pre-fill category
       setCategoryInput(expense.category || "");
@@ -103,6 +104,8 @@ const Dashboard = () => {
   };
 
   const handleDelete = async (id) => {
+    console.log("id", id);
+
     try {
       const token = localStorage.getItem("token");
       await axios.delete(`${process.env.NEXT_PUBLIC_API_URL}/expenses/${id}`, {
@@ -129,6 +132,8 @@ const Dashboard = () => {
 
     try {
       const token = localStorage.getItem("token");
+      console.log("selected expense", selectedExpense);
+
       if (selectedExpense) {
         // Edit existing expense
         await axios.put(
@@ -159,7 +164,7 @@ const Dashboard = () => {
             },
           }
         );
-        setExpenses([...expenses, expenseData]);
+        setExpenses([expenseData, ...expenses]);
       }
       if (selectedExpense) {
         handleCloseModal("Updated");
@@ -450,7 +455,7 @@ const Dashboard = () => {
                             </svg>
                             <span className="text-gray-600">Amount:</span>
                             <span className="font-semibold text-green-600">
-                              Rs. {expense.amount}
+                              $ {expense.amount}
                             </span>
                           </div>
 
@@ -606,6 +611,7 @@ const Dashboard = () => {
                     id="amount"
                     name="amount"
                     type="number"
+                    step="0.01"
                     defaultValue={selectedExpense?.amount || ""}
                     className="w-full p-2 border border-gray-300 rounded"
                     required
